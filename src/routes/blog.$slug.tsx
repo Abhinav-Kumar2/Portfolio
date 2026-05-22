@@ -53,7 +53,7 @@ function PostPage() {
           <time>{post.date}</time>
           <span>·</span>
           <span>{post.readingTime} min read</span>
-          {post.tags.map((t) => (
+          {post.tags.map((t: string) => (
             <span key={t} className="uppercase tracking-wider">· {t}</span>
           ))}
         </div>
