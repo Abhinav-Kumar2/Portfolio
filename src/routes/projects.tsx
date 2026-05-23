@@ -8,9 +8,9 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
   head: () => ({
     meta: [
-      { title: "Projects — Adrian Vale" },
+      { title: "Projects - Abhinav Kumar" },
       { name: "description", content: "Selected research and engineering projects." },
-      { property: "og:title", content: "Projects — Adrian Vale" },
+      { property: "og:title", content: "Projects - Abhinav Kumar" },
       { property: "og:description", content: "Selected research and engineering projects." },
     ],
   }),

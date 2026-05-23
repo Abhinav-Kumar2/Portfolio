@@ -16,7 +16,7 @@ export const Route = createFileRoute("/blog_/$slug")({
     if (!post) return {};
     return {
       meta: [
-        { title: `${post.title} — Adrian Vale` },
+        { title: `${post.title} - Abhinav Kumar` },
         { name: "description", content: post.description },
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.description },
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/blog_/$slug")({
       <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">404</p>
       <h1 className="mt-4 text-2xl font-medium">Post not found.</h1>
       <Link to="/blog" className="mt-8 inline-block text-sm text-muted-foreground hover:text-foreground">
-        ← Back to writing
+        ← Back to Blog
       </Link>
     </div>
   ),
@@ -45,7 +45,7 @@ function PostPage() {
         to="/blog"
         className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
       >
-        <ArrowLeft className="h-3.5 w-3.5" /> Writing
+        <ArrowLeft className="h-3.5 w-3.5" /> Blog
       </Link>
 
       <header className="mt-8 border-b border-border/60 pb-10">

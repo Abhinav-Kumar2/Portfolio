@@ -10,6 +10,7 @@ import {
 import appCss from "../styles.css?url";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { site } from "@/lib/site";
 
 function NotFoundComponent() {
   return (
@@ -56,10 +57,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Adrian Vale — Research Engineer" },
-      { name: "description", content: "Notes, projects and writing on machine learning, interpretability, and software craft." },
-      { property: "og:title", content: "Adrian Vale — Research Engineer" },
-      { property: "og:description", content: "Notes, projects and writing on machine learning, interpretability, and software craft." },
+      { title: `${site.name} - ${site.role}` },
+      { name: "description", content: "Notes, projects and blog posts on machine learning, interpretability, and software craft." },
+      { property: "og:title", content: `${site.name} - ${site.role}` },
+      { property: "og:description", content: "Notes, projects and blog posts on machine learning, interpretability, and software craft." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

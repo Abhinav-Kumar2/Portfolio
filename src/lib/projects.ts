@@ -11,58 +11,132 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "transformer-attention-viz",
-    title: "Attention Pattern Visualizer",
+    slug: "inter-iit-fraud-detection",
+    title: "Fraud Detection System (Inter IIT Tech Meet 14.0)",
     description:
-      "Interactive tool for inspecting multi-head attention activations across transformer layers. Built for interpretability research.",
-    tags: ["research", "transformers", "visualization", "python"],
+      "Production-grade fraud detection pipeline designed for severe class imbalance and streaming inference workloads. Benchmarked 20+ classical ML and deep learning systems with a strong focus on latency optimisation, robustness, and deployment-oriented evaluation.",
+    tags: [
+      "machine-learning",
+      "streaming-ml",
+      "fraud-detection",
+      "production-systems",
+      "model-benchmarking",
+    ],
     year: 2025,
-    github: "https://github.com/yourname/attention-viz",
-    demo: "https://example.com/attention",
+    github: "https://github.com/Abhinav-Kumar2/FraudDetection-Inter-IIT-",
   },
+
   {
-    slug: "noir-notes",
-    title: "Noir Notes",
+    slug: "filenest",
+    title: "FileNest",
     description:
-      "A minimal, file-based note system with bidirectional links and full-text search. Local-first, no servers.",
-    tags: ["typescript", "tooling", "ui"],
+      "Distributed multimodal semantic retrieval system enabling peer-to-peer search across decentralised nodes. Implements shared embedding pipelines, model sharding, and scalable distributed inference for retrieval consistency.",
+    tags: [
+      "distributed-systems",
+      "multimodal-ai",
+      "semantic-search",
+      "distributed-inference",
+      "retrieval-systems",
+    ],
     year: 2025,
-    github: "https://github.com/yourname/noir-notes",
+    github: "https://github.com/AISocietyIITJ/FileNest",
   },
+
   {
-    slug: "rlhf-playground",
-    title: "RLHF Playground",
+  slug: "histopathologic-cancer-detection",
+  title: "Histopathologic Cancer Detection",
+  description:
+    "Comprehensive cancer detection pipeline built for the Kaggle Histopathologic Cancer Detection challenge, combining exploratory data analysis, classical machine learning, deep learning workflows, Optuna-based hyperparameter optimisation, and model interpretability tooling.",
+  tags: [
+    "computer-vision",
+    "medical-ai",
+    "deep-learning",
+    "optuna",
+    "model-interpretability",
+    "kaggle",
+  ],
+  year: 2026,
+  github: "https://github.com/Abhinav-Kumar2/Histopathologic-Cancer-Detection",
+},
+
+  {
+    slug: "neurolearn",
+    title: "NeuroLearn",
     description:
-      "Reproducible experiments comparing PPO, DPO and KTO on small language models with detailed eval harness.",
-    tags: ["research", "rlhf", "python"],
+      "Transformer-based personalised course recommendation system built using sentiment analysis over course descriptions and student feedback. Includes backend API integration and end-to-end inference orchestration.",
+    tags: [
+      "transformers",
+      "recommendation-systems",
+      "nlp",
+      "llm-systems",
+      "sentiment-analysis",
+    ],
+    year: 2025,
+    github: "https://github.com/AISocietyIITJ/WARP-Amazon",
+  },
+
+  {
+    slug: "questlog",
+    title: "QuestLog",
+    description:
+      "Gamified productivity platform combining AI-generated task planning, focus-session tracking, browser extension monitoring, and social progression systems using FastAPI, React, Firebase, and Gemini integration.",
+    tags: [
+      "full-stack",
+      "fastapi",
+      "react",
+      "firebase",
+      "browser-extension",
+      "ai-agents",
+    ],
+    year: 2026,
+    github: "https://github.com/Abhinav-Kumar2/QuestLog",
+  },
+
+  {
+    slug: "options-pricing",
+    title: "Options Pricing Model",
+    description:
+      "Implemented Black–Scholes, Binomial, Trinomial, and Monte Carlo methods for options pricing, alongside backtesting and PnL tracking pipelines for quantitative evaluation.",
+    tags: [
+      "quantitative-finance",
+      "monte-carlo",
+      "numerical-methods",
+      "options-pricing",
+      "backtesting",
+    ],
+    year: 2025,
+    github: "https://github.com/Abhinav-Kumar2/options_pricing_model",
+  },
+
+  {
+    slug: "weight-of-love",
+    title: "The Weight Of Love - Text Based Murder Mystery Game",
+    description:
+      "Narrative-driven text adventure and murder mystery game implemented in C/C++. Features branching investigations, puzzle systems, turn-based combat, procedural maze gameplay, and multiple interactive minigames.",
+    tags: [
+      "c",
+      "c-plus-plus",
+      "game-development",
+      "systems-programming",
+      "interactive-fiction",
+    ],
     year: 2024,
-    github: "https://github.com/yourname/rlhf-playground",
+    github: "https://github.com/Abhinav-Kumar2/ic_project",
   },
+
   {
-    slug: "graph-retrieval",
-    title: "Graph-Augmented Retrieval",
+    slug: "aiml-paper-implementations",
+    title: "AI/ML Paper Implementations",
     description:
-      "Hybrid retriever combining dense embeddings with citation graph traversal for scientific QA.",
-    tags: ["research", "retrieval", "python"],
-    year: 2024,
-    github: "https://github.com/yourname/graph-retrieval",
-  },
-  {
-    slug: "type-safe-rpc",
-    title: "type-safe-rpc",
-    description:
-      "Tiny zero-dependency RPC layer with end-to-end TypeScript inference. Used across personal projects.",
-    tags: ["typescript", "library"],
-    year: 2023,
-    github: "https://github.com/yourname/type-safe-rpc",
-  },
-  {
-    slug: "shader-studies",
-    title: "Shader Studies",
-    description:
-      "A growing collection of small GLSL studies exploring noise, signed distance fields and ray marching.",
-    tags: ["graphics", "glsl"],
-    year: 2023,
-    github: "https://github.com/yourname/shader-studies",
+      "Collection of deep learning and machine learning implementations spanning CNNs, GANs, ResNets, AlexNet, and foundational research architectures across computer vision and generative modelling.",
+    tags: [
+      "deep-learning",
+      "computer-vision",
+      "gans",
+      "research-implementations",
+      "pytorch",
+    ],
+    year: 2025,
+    github: "https://github.com/Abhinav-Kumar2/AIML",
   },
 ];

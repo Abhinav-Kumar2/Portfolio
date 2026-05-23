@@ -7,9 +7,9 @@ export const Route = createFileRoute("/blog")({
   component: BlogIndex,
   head: () => ({
     meta: [
-      { title: "Writing — Adrian Vale" },
+      { title: "Blog - Abhinav Kumar" },
       { name: "description", content: "Essays and technical notes on machine learning, interpretability, and software craft." },
-      { property: "og:title", content: "Writing — Adrian Vale" },
+      { property: "og:title", content: "Blog - Abhinav Kumar" },
       { property: "og:description", content: "Essays and technical notes on machine learning, interpretability, and software craft." },
     ],
   }),
@@ -25,11 +25,11 @@ function BlogIndex() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <header className="animate-rise">
-        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Writing</p>
-        <h1 className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl">Notes from the dark room.</h1>
-        <p className="mt-3 text-muted-foreground">
+        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Blog</p>
+        <h1 className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl">Notes from the Underground</h1>
+        {/* <p className="mt-3 text-muted-foreground">
           Long-form notes, half-finished thoughts, and the occasional careful argument.
-        </p>
+        </p> */}
       </header>
 
       {tags.length > 0 && (
