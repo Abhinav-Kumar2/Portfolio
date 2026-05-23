@@ -1,7 +1,10 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import rehypeHighlight from "rehype-highlight";
+import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
+import "katex/dist/katex.min.css";
 import type { Components } from "react-markdown";
 
 interface MarkdownProps {
@@ -13,15 +16,16 @@ interface MarkdownProps {
 export function Markdown({ content, images = {} }: MarkdownProps) {
   const resolveSrc = (src?: string) => {
     if (!src) return src;
-    if (/^(https?:|data:|\/)/.test(src)) return src;
-    return images[src] ?? images[src.replace(/^\.\//, "")] ?? src;
+    const cleaned = src.trim().replace(/^<|>$/g, "");
+    if (/^(https?:|data:|\/)/.test(cleaned)) return cleaned;
+    return images[cleaned] ?? images[cleaned.replace(/^\.\//, "")] ?? cleaned;
   };
 
   const components: Components = {
     img: ({ src, alt, title }) => {
       const resolved = resolveSrc(typeof src === "string" ? src : undefined);
       return (
-        <figure>
+        <figure className="mx-auto">
           <img src={resolved} alt={alt ?? ""} loading="lazy" />
           {title ? <figcaption>{title}</figcaption> : null}
         </figure>
@@ -44,8 +48,8 @@ export function Markdown({ content, images = {} }: MarkdownProps) {
   return (
     <div className="prose-noir">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw, [rehypeHighlight, { detect: true, ignoreMissing: true }]]}
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeRaw, rehypeKatex, [rehypeHighlight, { detect: true, ignoreMissing: true }]]}
         components={components}
       >
         {content}

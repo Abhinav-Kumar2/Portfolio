@@ -3,9 +3,9 @@ import { ThemeToggle } from "./ThemeToggle";
 import { site } from "@/lib/site";
 
 const nav = [
-  { to: "/", label: "Index" },
+  { to: "/", label: "About Me" },
   { to: "/projects", label: "Projects" },
-  { to: "/blog", label: "Writing" },
+  { to: "/blog", label: "Blogs" },
 ] as const;
 
 export function Header() {
