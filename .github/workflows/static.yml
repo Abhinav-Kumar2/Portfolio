@@ -48,8 +48,10 @@ jobs:
           VITE_BASE_PATH: ${{ steps.base.outputs.base }}
         run: bun run build
 
-      - name: SPA fallback + Jekyll bypass
+      - name: Prepare static artifact
         run: |
+          # Drop the SSR server build — Pages only needs the static client output.
+          rm -rf dist/server
           # GitHub Pages serves 404.html for unknown paths. Copy the SPA shell
           # so any non-prerendered deep link still boots the client router.
           cp dist/index.html dist/404.html
