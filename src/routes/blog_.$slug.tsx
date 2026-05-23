@@ -4,7 +4,7 @@ import { getPost } from "@/lib/blog";
 import { Markdown } from "@/components/Markdown";
 import { Comments } from "@/components/Comments";
 
-export const Route = createFileRoute("/blog/$slug")({
+export const Route = createFileRoute("/blog_/$slug")({
   component: PostPage,
   loader: ({ params }) => {
     const post = getPost(params.slug);
