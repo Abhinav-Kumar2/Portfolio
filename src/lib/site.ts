@@ -10,10 +10,10 @@ export const site = {
   },
   // Giscus configuration — replace these with values from https://giscus.app
   giscus: {
-    repo: "yourname/your-repo" as `${string}/${string}`,
-    repoId: "REPLACE_WITH_REPO_ID",
-    category: "Announcements",
-    categoryId: "REPLACE_WITH_CATEGORY_ID",
+    repo: "Abhinav-Kumar2/Portfolio" as `${string}/${string}`,
+    repoId: "R_kgDOSlWLqg",
+    category: "General",
+    categoryId: "DIC_kwDOSlWLqs4C9rhL",
     mapping: "pathname" as const,
   },
 };
