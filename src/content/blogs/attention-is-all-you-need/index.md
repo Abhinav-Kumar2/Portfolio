@@ -326,11 +326,11 @@ The paper trained the model on the **WMT 2014 English-German and English-French 
 
 Sentences were grouped by similar sequence lengths to improve computational efficiency during batching. (to minimise the padding required since it affects computational efficiency)
 
-The base Transformer model was trained on **8 NVIDIA P100 GPUs** for about 12 hours while the larger **"Transformer Big"** model was trained for roughly 3.5 days.
+The base Transformer model was trained on **8 NVIDIA P100 GPUs** for about 12 hours while the larger Transformer model was trained for roughly 3.5 days.
 
 For optimization, the paper used the **Adam optimizer with a custom learning rate schedule** instead of a fixed learning rate. The learning rate first increases gradually during an initial warmup phase and later decreases proportionally to the inverse square root of the training step number.
 
-This warmup strategy was a great choice because Transformers are often unstable during early training due to its inital parameters being randomly initialized. The optimization must be eased as the learning rate increases. The paper also used regularization techniques such as dropout and label smoothing to improve generalization and prevent overconfidence in predictions.
+This warmup strategy was a great choice because Transformers are often **unstable during early training** due to its inital parameters being randomly initialized. The optimization must be eased as the learning rate increases. The paper also used regularization techniques such as dropout and label smoothing to improve generalization and prevent overconfidence in predictions.
 
 ![alt text](<ablation.png>)
 
