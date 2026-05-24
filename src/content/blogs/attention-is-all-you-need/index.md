@@ -7,18 +7,21 @@ tags: [transformers, attention, deep-learning, nlp]
 ---
 Arxiv link: https://arxiv.org/abs/1706.03762
 
-One of the very first research papers I read and one that I enjoyed understanding. I wrote this blog with beginners in the field of AI/ML in mind, aiming to help them understand the paper more clearly and efficiently.
+One of the very first research papers I read and one that I enjoyed understanding. I wrote this blog several months ago aiming to help someone who might be starting in the field of AIML to understand the paper more clearly and efficiently.
 
 # The Arrival of Transformers
 
+![alt text](pexels-solyartphotos-12334692.jpg)
+
 In 2017, a paper that is incredibly monumental in the field of deep learning was released, **'Attention Is All You Need'**. 
 
-This paper introduced the Transformer architecture utilising **only the concept of attention mechanisms** while getting rid of any recurrences or convolutions to deal with sequential data. This architecture is the foundation behind almost every modern AI models today including GPT, BERT, ViT etc.
+This paper introduced the Transformer architecture utilising **only the concept of attention mechanisms** while getting rid of any recurrences or convolutions to deal with sequential data. This architecture is the foundation behind most modern large scale AI systems today GPT, BERT, ViT etc.
 
 When you look at an entire language, it comprises of letters, words, sentences and paragraphs. What gives a language meaning, is the order in which these elements are written so as to allow the reader to understand them. If these elements were randomly shuffled, they wouldn't make any sense at all. 
 
 Now, researchers wanted to use natural language as an input for tasks such as machine translation, text summarization etc. Traditional "vanilla" neural networks required **fixed size inputs and outputs** but this made it difficult to take language as an input as it is of variable length.
 
+![alt text](pexels-mingyang-liu-301813241-31604768.jpg)
 For example,
 
 > "Elementary, my dear Watson."
@@ -35,9 +38,8 @@ Let us take an example of **English to French Translation** Task,
 
 > "C'est fini, Anakin. J'ai l'avantage du terrain." ~ French
 
-![alt text](star-wars-revenge-of-the-sith-web.avif)
 
-This is an example of translation by Google Translate that relies on **GNMT** (Google Neural Machine Translation) utilizing the concept of attention.
+This is an example of translation by Google Translate that relies on **GNMT** (Google Neural Machine Translation) utilizing the concept of attention mechanism combined with recurrent architectures. 
 
 What it does is understand the context of the English sentence and translate into French which would make sense for the french native readers without it feeling awkward.
 
@@ -45,7 +47,7 @@ If it was a rigid system and translated every English word directly to French th
 
 > "C'est sur, Anakin. Je avoir le haut sol."
 
-Here, the word 'sur' refers to the positional meaning of the word 'over' meaning upon and on, thereforce the inclusion of context of the entire sentence is quite important.
+Here, the word 'sur' refers to the positional meaning of the word 'over' meaning upon/on, thereforce the inclusion of context of the entire sentence is quite important. (PS: Its just a rudimentary translation I did word by word using google translate.)
 
 Before Transformers, sequential tasks like machine translation were **dominated by RNNs and convolution-based architectures**. RNNs processed language sequentially maintaining a **hidden state** that carried information from previous tokens forward through the sequence. 
 
@@ -66,6 +68,8 @@ Attention tries to answer one simple question.
 
 > To understand this word, what other words in the sentence are important?
 
+![alt text](pexels-markus-buetler-399619609-14849219.jpg)
+
 Let us take this sentence.
 
 > "The quick brown fox jumps over the lazy dog."
@@ -82,7 +86,8 @@ However, words like **'the'** may not contribute as strongly to the actual seman
 
 This is exactly what attention does. Instead of treating every word equally, the model dynamically decides which words **matter more or less** and how different words are related to each other.
 
-What I just described to you is self attention and this is the reason the Transformer can model long-range dependencies extremely effectively. A word does not need to wait for information to travel sequentially through hidden states like in RNNs. It can directly access relevant information from anywhere in the sentence immediately.
+What I just described to you is attention and this is the reason the Transformer can model long-range dependencies extremely effectively. If a sentence tends to itself, then it becomes self attention. 
+A word does not need to wait for information to travel sequentially through hidden states like in RNNs. It can directly access relevant information from anywhere in the sentence immediately.
 
 However, there is a **big issue** with single self attention. When attention gathers information from multiple words, it essentially combines contextual signals together into one representation. The problem is that different kinds of relationships may start **getting blended or averaged together**.
 
@@ -148,9 +153,9 @@ Mathematically, the paper defines attention as:
 
 **$$\mathrm{Attention}(Q,K,V)=\mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$**
 
-This equation is one of the central equations behind modern deep learning systems.
+This equation is one of the defining operations in attention mechanism. 
 
-The first operation **$QK^T$** computes similarities between queries and keys. Larger values indicate stronger relevance.
+<!-- The first operation **$QK^T$** computes similarities between queries and keys. Larger values indicate stronger relevance.
 
 However as dimensionality grows, these dot products become very large statistically.
 
@@ -160,7 +165,104 @@ then the variance of the dot product grows approximately proportionally to **$d_
 
 which means the standard deviation grows as **$\sqrt{d_k}$**
 
-Large values push the softmax function into extremely saturated regions, producing tiny gradients and unstable learning. The scaling factor **$\frac{1}{\sqrt{d_k}}$** prevents this instability.
+Large values push the softmax function into extremely saturated regions, producing tiny gradients and unstable learning. The scaling factor **$\frac{1}{\sqrt{d_k}}$** prevents this instability. -->
+
+The first operation **$QK^T$** computes similarities between queries and keys. Larger values indicate stronger relevance.
+
+However as dimensionality grows, these dot products become very large statistically.
+
+If
+
+$$
+q \cdot k = \sum_{i=1}^{d_k} q_i k_i
+$$
+
+then the variance of the dot product scales proportionally to **$d_k$**.
+
+To understand why, let us define a random variable
+
+$$
+X \sim \mathcal{N}(0, \sigma^2)
+$$
+
+This means:
+
+- the mean of $X$ is
+
+$$
+\mathbb{E}[X] = 0
+$$
+
+- the variance of $X$ is
+
+$$
+\mathrm{Var}(X) = \sigma^2
+$$
+
+- the standard deviation is
+
+$$
+\sqrt{\mathrm{Var}(X)} = \sigma
+$$
+
+Now assume every component of the query and key vectors is independently sampled from this distribution:
+
+$$
+q_i, k_i \sim \mathcal{N}(0,\sigma^2)
+$$
+
+The dot product becomes
+
+$$
+q \cdot k
+=
+\sum_{i=1}^{d_k} q_i k_i
+$$
+
+Each product term contributes some variance, and since there are $d_k$ independent terms being added together, the total variance grows linearly with dimensionality:
+
+$$
+\mathrm{Var}(q \cdot k)
+\propto d_k
+$$
+
+This means the standard deviation grows as
+
+$$
+\sqrt{d_k}
+$$
+
+So as the dimensionality increases, the attention scores become increasingly large in magnitude.
+
+These large values push the softmax function into saturated regions where gradients become extremely small, leading to unstable optimization.
+
+To stabilize this, the Transformer scales the dot product by
+
+$$
+\frac{1}{\sqrt{d_k}}
+$$
+
+which normalizes the variance back to approximately unit scale:
+
+$$
+\mathrm{Var}
+\left(
+\frac{q \cdot k}{\sqrt{d_k}}
+\right)
+=
+\frac{1}{d_k}
+\mathrm{Var}(q \cdot k)
+$$
+
+Since
+
+$$
+\mathrm{Var}(q \cdot k) \propto d_k
+$$
+
+the $d_k$ terms cancel out, keeping the variance approximately constant instead of growing with dimensionality.
+
+This keeps the softmax numerically stable and prevents gradient collapse during training.
 
 After scaling, softmax converts the similarities into probability-like attention weights. These weights determine how strongly each token contributes to the updated representation.
 
@@ -178,7 +280,7 @@ The feed-forward layer is defined as **$\mathrm{FFN}(x)=\max(0,xW_1+b_1)W_2+b_2$
 
 **Why is this necessary?**
 
-Because attention alone is mostly a weighted averaging mechanism. Without nonlinear transformations, the model would have limited expressive capability. The feed-forward network introduces nonlinear feature transformation after contextual information has already been exchanged.
+Without nonlinear transformations of the feed forward neural network, the model would have limited expressive capability. The feed-forward network introduces nonlinear feature transformation after contextual information has already been exchanged.
 
 Another critical component throughout the architecture is the residual connection followed by layer normalization, **$\mathrm{LayerNorm}(x + \mathrm{Sublayer}(x))$**
 
@@ -200,7 +302,7 @@ Suppose during training, the target sentence is the following.
 
 > 'I love transformers'.
 
-If we want to predict the word **'transformers'**, the decoder input will be **'I love'** (the correct ground truth words) even if it might have predicted incorrectly. This mechanism is called **teacher forcing** which leads to faster and stable learning since errors do not accumulate, however we can't use this technique during inference, so it does create an **exposure bias.**
+If we want to predict the word **'transformers'**, the decoder input will be **' [START] I love'** (the correct ground truth words) when the target is **"I love transformers"** even if it might have predicted incorrectly before. This mechanism is called **teacher forcing** which leads to faster and stable learning since errors do not accumulate, however we can't use this technique during inference. Since during inference, the model must instead rely on its own previously generated tokens, which introduces exposure bias because training and inference conditions differ.
 
 The second major addition is **Encoder-Decoder Attention.**
 
@@ -217,6 +319,8 @@ Finally, after passing through decoder layers, the representations go through a 
 # Summary of Training and Results + Conclusion
 
 Here are some of the numbers and terms summarized to the training and results in the paper. The efficiency of the model in this paper was superb compared to the earlier systems.
+
+![alt text](image.png)
 
 The paper trained the model on the **WMT 2014 English-German and English-French machine translation datasets** using **byte-pair encoded token vocabularies**. (byte-pair encoded token vocabulary here refers to converting raw text into subword reusable units, kind of an in between of word-level and character-level tokenization).
 
@@ -236,8 +340,45 @@ BLEU stands for **Bilingual Evaluation Understudy** is a metric used to evaluate
 
 The paper also performed ablation studies to understand which architectural components mattered most. They experimented with varying the number of attention heads, attention dimensions, model sizes, dropout values, and positional encoding methods. The experiments showed that **multi-head attention substantially improved performance** compared to single-head attention, **larger models consistently performed better**, and **dropout was critical** for avoiding overfitting.
 
-Though, **too many heads led to a drop in quality**. Interestingly, learned positional embeddings and sinusoidal positional encodings produced nearly identical results. This can be due to the **minimal need of positional information** for the transformer.
+Though, **too many heads led to a drop in quality**. Interestingly, learned positional embeddings and sinusoidal positional encodings produced nearly identical results. This suggested that sinusoidal positional encodings were sufficient for capturing sequence order in the evaluated tasks.
 
 Beyond translation, the paper also tested the Transformer on English constituency parsing tasks. Even without extensive task-specific tuning, the model achieved highly competitive parsing performance demonstrating that the architecture generalized beyond machine translation alone.
 
 The most important conclusion of the paper was that recurrence was not fundamentally necessary for sequence understanding. Self-attention alone was sufficient to model long-range dependencies effectively while enabling massive parallelization. That idea eventually became the foundation behind nearly all modern large-scale AI models.
+
+PS: I have made a corny pun somewhere above in the blog. Let me know if you catch it!
+
+# References
+
+If you want to dive deeper into the rabbit hole, these papers are absolutely worth reading. I really enjoyed going through them one after the other because you can actually watch the evolution of modern sequence modeling happen in real time. 
+
+1. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017).  
+   *Attention Is All You Need.*  
+   https://arxiv.org/abs/1706.03762
+
+2. Bahdanau, D., Cho, K., & Bengio, Y. (2014).  
+   *Neural Machine Translation by Jointly Learning to Align and Translate.*  
+   https://arxiv.org/abs/1409.0473
+
+3. Sutskever, I., Vinyals, O., & Le, Q. V. (2014).  
+   *Sequence to Sequence Learning with Neural Networks.*  
+   https://arxiv.org/abs/1409.3215
+
+4. Cho, K., Van Merriënboer, B., Gulcehre, C., Bahdanau, D., Bougares, F., Schwenk, H., & Bengio, Y. (2014).  
+   *Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation.*  
+   https://arxiv.org/abs/1406.1078
+
+5. Wu, Y., Schuster, M., Chen, Z., et al. (2016).  
+   *Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation.*  
+   https://arxiv.org/abs/1609.08144
+
+6. Gehring, J., Auli, M., Grangier, D., Yarats, D., & Dauphin, Y. N. (2017).  
+   *Convolutional Sequence to Sequence Learning.*  
+   https://arxiv.org/abs/1705.03122
+
+7. Kalchbrenner, N., Espeholt, L., Simonyan, K., et al. (2016).  
+   *Neural Machine Translation in Linear Time.*  
+   https://arxiv.org/abs/1610.10099
+
+
+

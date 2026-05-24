@@ -33,7 +33,7 @@ function Index() {
         </h1>
 
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
-          Undergraduate Researcher at IIT Jodhpur interested in building and understanding systems across AI and machine learning, especially language models, retrieval systems, distributed inference, and applied ML.
+          Undergraduate Student from Artificial Intelligence and Data Science branch in IIT Jodhpur. UG Researcher at Image Analysis and Biometric Lab(IAB) in IIT Jodhpur interested in building and understanding systems across AI and machine learning. 
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">

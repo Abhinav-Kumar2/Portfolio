@@ -72,8 +72,25 @@ function buildImageMapForSlug(slug: string): Record<string, string> {
 }
 
 function estimateReadingTime(text: string): number {
-  const words = text.trim().split(/\s+/).length;
-  return Math.max(1, Math.round(words / 220));
+  const words = text
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/\$\$?[\s\S]*?\$\$?/g, "")
+    .trim()
+    .split(/\s+/).length;
+
+  const codeBlockCount = Math.max(0, (text.match(/```/g)?.length ?? 0) / 2);
+  const inlineCodeCount = text.match(/`[^`]+`/g)?.length ?? 0;
+  const headingCount = text.match(/^#{1,6}\s+/gm)?.length ?? 0;
+  const hasMath = /\$\$?|\\\(|\\\)/.test(text);
+
+  const technicalFactor = Math.min(
+    0.45,
+    codeBlockCount * 0.1 + inlineCodeCount * 0.012 + Math.min(0.12, headingCount * 0.02) + (hasMath ? 0.05 : 0)
+  );
+
+  const wordsPerMinute = 180;
+  return Math.max(1, Math.round((words / wordsPerMinute) * (1 + technicalFactor)));
 }
 
 function buildPost(path: string, raw: string): BlogPost {

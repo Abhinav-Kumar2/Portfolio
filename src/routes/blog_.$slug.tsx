@@ -52,7 +52,9 @@ function PostPage() {
         <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-muted-foreground">
           <time>{post.date}</time>
           <span>·</span>
-          <span>{post.readingTime} min read</span>
+          <span className="rounded-full border border-border/70 bg-muted/10 px-2 py-0.5 font-semibold text-foreground">
+            {post.readingTime} min read
+          </span>
           {post.tags.map((t: string) => (
             <span key={t} className="uppercase tracking-wider">· {t}</span>
           ))}

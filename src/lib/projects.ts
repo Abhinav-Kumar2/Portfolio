@@ -12,7 +12,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "inter-iit-fraud-detection",
-    title: "Fraud Detection System (Inter IIT Tech Meet 14.0)",
+    title: "Fraud Detection System (Gold at Inter IIT Tech Meet 14.0)",
     description:
       "Production-grade fraud detection pipeline designed for severe class imbalance and streaming inference workloads. Benchmarked 20+ classical ML and deep learning systems with a strong focus on latency optimisation, robustness, and deployment-oriented evaluation.",
     tags: [
@@ -25,6 +25,23 @@ export const projects: Project[] = [
     year: 2025,
     github: "https://github.com/Abhinav-Kumar2/FraudDetection-Inter-IIT-",
   },
+
+  {
+  slug: "histopathologic-cancer-detection",
+  title: "Histopathologic Cancer Detection",
+  description:
+    "Comprehensive cancer detection pipeline built for the Kaggle Histopathologic Cancer Detection dataste, combining exploratory data analysis, classical machine learning, deep learning workflows, Optuna-based hyperparameter optimisation, and model interpretability tooling.",
+  tags: [
+    "computer-vision",
+    "medical-ai",
+    "deep-learning",
+    "optuna",
+    "model-interpretability",
+    "kaggle",
+  ],
+  year: 2026,
+  github: "https://github.com/Abhinav-Kumar2/Histopathologic-Cancer-Detection",
+},
 
   {
     slug: "filenest",
@@ -42,22 +59,7 @@ export const projects: Project[] = [
     github: "https://github.com/AISocietyIITJ/FileNest",
   },
 
-  {
-  slug: "histopathologic-cancer-detection",
-  title: "Histopathologic Cancer Detection",
-  description:
-    "Comprehensive cancer detection pipeline built for the Kaggle Histopathologic Cancer Detection challenge, combining exploratory data analysis, classical machine learning, deep learning workflows, Optuna-based hyperparameter optimisation, and model interpretability tooling.",
-  tags: [
-    "computer-vision",
-    "medical-ai",
-    "deep-learning",
-    "optuna",
-    "model-interpretability",
-    "kaggle",
-  ],
-  year: 2026,
-  github: "https://github.com/Abhinav-Kumar2/Histopathologic-Cancer-Detection",
-},
+  
 
   {
     slug: "neurolearn",

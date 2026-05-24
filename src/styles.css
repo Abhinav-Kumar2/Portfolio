@@ -32,9 +32,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-surface: var(--surface);
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", "Inter var", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --font-serif: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Inter", "Inter var", ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Light — warm off-white, graphite ink */
@@ -99,6 +99,14 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     transition: background-color 200ms ease, color 200ms ease;
+    font-weight: 400;
+  }
+  strong, b {
+    font-weight: 700;
+  }
+  em, i {
+    font-style: italic;
+    font-weight: 500;
   }
   code, pre, kbd, samp {
     font-family: var(--font-mono);
@@ -114,16 +122,17 @@
   color: var(--color-foreground);
   font-size: 1.0625rem;
   line-height: 1.78;
-  letter-spacing: -0.003em;
+  letter-spacing: -0.01em;
+  font-weight: 400;
 }
 .prose-noir > * + * { margin-top: 1.25em; }
 .prose-noir h1, .prose-noir h2, .prose-noir h3, .prose-noir h4 {
   color: var(--color-foreground);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
   margin-top: 2.2em;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.55em;
 }
 .prose-noir h1 { font-size: 2rem; }
 .prose-noir h2 { font-size: 1.5rem; }
@@ -135,10 +144,23 @@
   text-decoration: underline;
   text-decoration-color: var(--color-border);
   text-underline-offset: 3px;
-  transition: text-decoration-color 150ms;
+  transition: text-decoration-color 150ms ease;
+  font-weight: 500;
 }
 .prose-noir a:hover { text-decoration-color: var(--color-foreground); }
-.prose-noir strong { color: var(--color-foreground); font-weight: 600; }
+.prose-noir strong, .prose-noir b {
+  color: var(--color-foreground);
+  font-weight: 700;
+}
+.dark .prose-noir strong, .dark .prose-noir b {
+  color: oklch(0.96 0.008 80);
+  font-weight: 800;
+}
+.prose-noir em, .prose-noir i {
+  color: var(--color-foreground);
+  font-style: italic;
+  font-weight: 500;
+}
 .prose-noir ul, .prose-noir ol { padding-left: 1.5em; margin: 1.1em 0; }
 .prose-noir ul { list-style: disc; }
 .prose-noir ol { list-style: decimal; }
@@ -149,6 +171,7 @@
   padding: 0.2em 0 0.2em 1.2em;
   color: var(--color-muted-foreground);
   font-style: italic;
+  font-weight: 500;
   margin: 1.5em 0;
 }
 .prose-noir hr {
