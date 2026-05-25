@@ -59,24 +59,6 @@ export const projects: Project[] = [
     github: "https://github.com/AISocietyIITJ/FileNest",
   },
 
-  
-
-  {
-    slug: "neurolearn",
-    title: "NeuroLearn",
-    description:
-      "Transformer-based personalised course recommendation system built using sentiment analysis over course descriptions and student feedback. Includes backend API integration and end-to-end inference orchestration.",
-    tags: [
-      "transformers",
-      "recommendation-systems",
-      "nlp",
-      "llm-systems",
-      "sentiment-analysis",
-    ],
-    year: 2025,
-    github: "https://github.com/AISocietyIITJ/WARP-Amazon",
-  },
-
   {
     slug: "questlog",
     title: "QuestLog",

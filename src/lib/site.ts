@@ -5,7 +5,7 @@ export const site = {
   email: "posttoabhinavk@gmail.com",
   social: {
     github: "https://github.com/Abhinav-Kumar2",
-    linkedin: "https://www.linkedin.com/in/abhinav-kumar-iitj",
+    linkedin: "https://www.linkedin.com/in/abhinav-kumar-6b50b3322",
     twitter: "https://x.com/Abhinav1861648",
   },
   // Giscus configuration — replace these with values from https://giscus.app
