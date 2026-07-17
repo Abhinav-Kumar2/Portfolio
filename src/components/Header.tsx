@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 
 const nav = [
   { to: "/", label: "About Me" },
+  { to: "/publications", label: "Publications" },
   { to: "/projects", label: "Projects" },
   { to: "/blog", label: "Blogs" },
 ] as const;

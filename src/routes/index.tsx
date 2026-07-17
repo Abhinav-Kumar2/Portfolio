@@ -73,6 +73,42 @@ function Index() {
         </div>
       </section>
 
+      {/* Publications */}
+      <section className="py-12">
+        <div className="flex items-end justify-between">
+          <h2 className="text-xl font-medium tracking-tight">
+            Publications
+          </h2>
+        </div>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <article className="group flex flex-col rounded-lg border border-border bg-surface/60 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/30 hover:bg-surface">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h3 className="text-base font-medium tracking-tight text-foreground">
+                  Spashta Audio-Bench: Unified ASR & TTS Evaluation Framework across Indian Languages
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">Accepted at Interspeech 2026 (CORE A-ranked)</p>
+              </div>
+              <span className="font-mono text-xs text-muted-foreground">Jun 2026</span>
+            </div>
+
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Advisors: Dr. Richa Singh and Dr. Mayank Vatsa.
+            </p>
+
+            <div className="mt-4 space-y-2 text-sm leading-relaxed text-muted-foreground">
+              <p>
+                Quantified the performance of 10 open-source ASR and TTS models across 7 corpora spanning 22 Indian languages, analyzing 329K+ samples totaling 644+ hours of speech.
+              </p>
+              <p>
+                Formulated TTS-ASR degradation as a novel, reproducible intelligibility metric, enabling joint evaluation of acoustic naturalness and linguistic fidelity.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
       {/* Featured projects */}
       <section className="py-12">
         <div className="flex items-end justify-between">
