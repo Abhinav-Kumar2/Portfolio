@@ -1,4 +1,4 @@
-// Markdown blog loader. Posts live in src/content/blogs/<slug>/index.md
+// Markdown blog loader. Posts live in src/content/blogs/<slug>/*.md
 // with co-located images. Frontmatter is parsed in-browser (no Node deps).
 
 export interface BlogMeta {
@@ -17,7 +17,7 @@ export interface BlogPost extends BlogMeta {
 }
 
 // Eager raw markdown
-const rawPosts = import.meta.glob("../content/blogs/*/index.md", {
+const rawPosts = import.meta.glob("../content/blogs/*/*.md", {
   eager: true,
   query: "?raw",
   import: "default",
@@ -54,7 +54,7 @@ function parseFrontmatter(raw: string): { data: Record<string, unknown>; content
 }
 
 function slugFromPath(path: string): string {
-  const m = path.match(/blogs\/([^/]+)\/index\.md$/);
+  const m = path.match(/blogs\/([^/]+)\/[^/]+\.md$/);
   return m ? m[1] : path;
 }
 
@@ -66,6 +66,8 @@ function buildImageMapForSlug(slug: string): Record<string, string> {
       const rel = path.slice(prefix.length);
       out[rel] = url;
       out[`./${rel}`] = url;
+      out[decodeURIComponent(rel)] = url;
+      out[rel.split("/").pop() ?? rel] = url;
     }
   }
   return out;

@@ -18,7 +18,15 @@ export function Markdown({ content, images = {} }: MarkdownProps) {
     if (!src) return src;
     const cleaned = src.trim().replace(/^<|>$/g, "");
     if (/^(https?:|data:|\/)/.test(cleaned)) return cleaned;
-    return images[cleaned] ?? images[cleaned.replace(/^\.\//, "")] ?? cleaned;
+    let decoded = cleaned;
+    try {
+      decoded = decodeURIComponent(cleaned);
+    } catch {
+      // Keep the original path when a malformed URI is supplied.
+    }
+    const withoutPrefix = decoded.replace(/^\.\//, "");
+    const filename = withoutPrefix.split("/").pop() ?? withoutPrefix;
+    return images[cleaned] ?? images[withoutPrefix] ?? images[filename] ?? cleaned;
   };
 
   const components: Components = {
